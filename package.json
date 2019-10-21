@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.21",
     "@emotion/styled": "^10.0.17",
+    "@mdx-deck/components": "^2.5.0",
     "@mdx-deck/themes": "^3.0.8",
     "@styled-system/css": "^5.0.23",
     "@styled-system/should-forward-prop": "^5.1.2",
@@ -47,8 +48,8 @@
     "eject": "react-scripts eject",
     "lint:ts": "eslint 'src/**/*.ts{,x}'",
     "lint:ts:fix": "eslint 'src/**/*.ts{,x}' --fix",
-    "start:presentation": "mdx-deck presentation/deck.mdx",
-    "build:presentation": "mdx-deck build presentation/deck.mdx",
+    "presentation": "mdx-deck presentation/deck.mdx",
+    "presentation:build": "mdx-deck build presentation/deck.mdx",
     "help": "mdx-deck"
   },
   "eslintConfig": {
