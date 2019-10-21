@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FunctionComponent } from 'react';
+import ButtonWithStylesheet from '../src/components/button-with-stylesheet';
+import ButtonWithInlineCss from '../src/components/button-with-inline-css';
+import ButtonWithStyledComponents from '../src/components/button-with-styled-component';
+import ButtonWithStyledSystem from '../src/components/button-with-styled-system';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: FunctionComponent = () => (
+  <div className="App">
+    <ButtonWithStylesheet />
+    <br />
+    <ButtonWithInlineCss />
+    <br />
+    <ButtonWithStyledComponents />
+    <br />
+    <ButtonWithStyledSystem />
+  </div>
+);
 
 export default App;

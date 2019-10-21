@@ -1,0 +1,47 @@
+$white: #fff;
+$dark: #333;
+$gray: #cfd3d6;
+$blue: #7eb6e2;
+$red: #e7969b;
+$tablet: 679px;
+$desktop: 1025px;
+
+.button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid $gray;
+  background: $white;
+  color: $dark;
+  font-size: 0.75rem;
+  font-weight: 200;
+  text-decoration: none;
+  cursor: pointer;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 1rem;
+  }
+
+  @media screen and (min-width: $desktop) {
+    font-size: 1.5rem;
+  }
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &.primary {
+    background: $blue;
+    border-color: $blue;
+    color: $white;
+  }
+
+  &.danger {
+    background: $red;
+    border-color: $red;
+    color: $white;
+  }
+}

@@ -1,0 +1,271 @@
+import { prism , yellow } from '@mdx-deck/themes'
+import { Image } from '@mdx-deck/components'
+
+export const themes = [
+  yellow,
+  prism
+]
+
+
+# HOW TO STYLE IN REACT?
+
+---
+
+## Stylesheet (Css, Sass & Less)
+
+```scss
+.button {
+  display: 'inline-flex';
+  background-color: '#342f4d';
+  color: '#ffffff';
+
+  &__content {
+    font-size: '0.875rem';
+  }
+}
+```
+---
+
+## Stylesheet (Css, Sass & Less)
+
+```jsx
+import './button.scss'
+
+const StyledButton = ({ handleClick, children }) => (
+  <button className="button" onClick={handleClick}>
+    <p className="button__content">{children}</p>
+  </button>
+)
+```
+
+---
+
+## Inline Styling
+
+```jsx
+const buttonStyle = {
+  display: 'inline-flex',
+  backgroundColor: '#342f4d',
+  color: '#ffffff'
+}
+
+const ContentStyle = {
+  fontSize: '0.875rem'
+}
+
+const StyledButton = ({ handleClick, children }) => (
+  <button style={buttonStyle} onClick={handleClick}>
+    <p style={ContentStyle}>{children}</p>
+  </button>
+)
+```
+
+---
+
+## CSS Modules
+
+```jsx
+:local(button) {
+  display: 'inline-flex';
+  background-color: '#342f4d';
+  color: '#ffffff';
+}
+
+:local(content) {
+  font-size: '0.875rem';
+}
+```
+
+---
+
+## CSS Modules
+
+```jsx
+import styles from './Button.css';
+
+const StyledButton = ({ handleClick, children }) => (
+  <button className={styles.button} onClick={handleClick}>
+    <p className={styles.content}>{children}</p>
+  </button>
+)
+```
+
+---
+
+## CSS-in-JS (styled-component | emotion  | jss)
+
+```jsx
+import styled from 'styled-components';
+// or
+import styled from '@emotion/styled'
+
+const Button = styled.button` //or styled('button')
+  display: 'inline-flex';
+  background-color: '#342f4d';
+  color: '#ffffff';
+`
+
+const Content = styled.p`
+  font-size: '0.875rem';
+`
+
+const StyledButton = ({ handleClick, children }) => (
+  <Button onClick={handleClick}>
+    <Content>{children}</Content>
+  </Button>
+)
+```
+
+---
+
+## CSS-in-JS (styled-component | emotion  | jss)
+
+```jsx
+import styled, { ThemeProvider } from 'styled-components';
+
+const theme = {
+  colors: {
+    blueSky: '#93afff',
+    lightOrange: '#ffc097'
+  }
+}
+
+const Button = styled.button`
+  display: 'inline-flex';
+  background-color: `${props => props.theme.colors.blueSky}`;
+  color: `${props => props.theme.colors.lightOrange}`;
+  border-color: `${props => props.customBorderColor}`
+`
+
+const Content = styled.p`
+  font-size: '0.875rem';
+`
+
+const StyledButton = ({ handleClick, children }) => (
+  <ThemeProvider theme={theme}>
+    <Button onClick={handleClick} customBorderColor="#fdsafd">
+      <Content>{children}</Content>
+    </Button>
+  </ThemeProvider>
+)
+```
+
+---
+
+## CSS-in-JS (styled-component | emotion  | jss)
+
+**https://npmcharts.com/compare/glamor,aphrodite,radium,glamorous,styled-components,jss,emotion?interval=30**
+
+---
+
+## COMPONENT-BASED DESIGN
+
+<Image
+  style={{
+    backgroundSize: 'auto auto'
+  }}
+  src='https://vendiadvertising.com/sites/default/files/component-design-mock-up.png'
+>
+</Image>
+
+---
+
+## Styled-system
+
+**https://github.com/styled-system/styled-system**
+
+---
+
+## Styled-system
+
+```jsx
+import { space, width, fontSize, color } from 'styled-system';
+import styled, { ThemeProvider } from 'styled-components';
+import theme from './theme';
+
+const Box = styled.div(
+  {
+    boxSizing: 'border-box'
+  },
+  space,
+  width,
+  fontSize,
+  color
+)
+
+render(
+  <ThemeProvider theme={theme}>
+    <Box p={[3, 4, 5]} bg="blueSky" color="lightOrange">
+      This is a Box
+    </Box>
+  </ThemeProvider>,
+);
+```
+
+---
+
+## Styled-system
+
+**- Design Constraints Theme -**
+
+```jsx
+const theme = {
+  breakpoints: [32, 48, 64],
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  fontSizes: [12, 14, 16, 20, 24, 36, 48, 80, 96],
+  fontWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+  lineHeights: {
+    solid: 1,
+    title: 1.25,
+    copy: 1.5,
+  },
+  letterSpacings: {
+    normal: 'normal',
+    tracked: '0.1em',
+    tight: '-0.05em',
+    mega: '0.25em',
+  },
+  fonts: {
+    serif: 'athelas, georgia, times, serif'
+  },
+  borders: [
+    0,
+    '1px solid',
+    '2px solid',
+    '4px solid',
+    '8px solid',
+    '16px solid',
+    '32px solid',
+  ],
+  radii: [0, 2, 4, 16, 9999, '100%'],
+  colors: {
+    blueSky: '#93afff',
+    lightOrange: '#ffc097'
+  },
+};
+```
+
+---
+
+## Styled-system
+
+**- Design Constraints Theme -**
+
+```jsx
+// font-size: 24px (theme.fontSizes[4])
+<Box fontSize={4} />
+
+// margin: 16px (theme.space[3])
+<Box m={2} />
+
+// color: #93afff (theme.colors.blueSky)
+<Box color="blueSky" />
+
+// line-height: 1.5 (theme.lineHeights.copy)
+<Box lineHeight="copy" />
+
+// renders CSS `50%` width since it's not defined in theme
+<Box width={1/2} />
+```
+
+---
