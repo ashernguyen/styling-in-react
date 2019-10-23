@@ -6,7 +6,7 @@ export const themes = [
 ]
 
 
-# HOW TO STYLE IN REACT?
+# HOW TO STYLE COMPONENTS IN REACT?
 
 ---
 
@@ -30,8 +30,8 @@ export const themes = [
 ```jsx
 import './button.scss'
 
-const StyledButton = ({ handleClick, children }) => (
-  <button className="button" onClick={handleClick}>
+const StyledButton = ({ onClick, children }) => (
+  <button className="button" onClick={onClick}>
     <p className="button__content">{children}</p>
   </button>
 )
@@ -52,8 +52,8 @@ const ContentStyle = {
   fontSize: '0.875rem'
 }
 
-const StyledButton = ({ handleClick, children }) => (
-  <button style={buttonStyle} onClick={handleClick}>
+const StyledButton = ({ onClick, children }) => (
+  <button style={buttonStyle} onClick={onClick}>
     <p style={ContentStyle}>{children}</p>
   </button>
 )
@@ -82,8 +82,8 @@ const StyledButton = ({ handleClick, children }) => (
 ```jsx
 import styles from './Button.css';
 
-const StyledButton = ({ handleClick, children }) => (
-  <button className={styles.button} onClick={handleClick}>
+const StyledButton = ({ onClick, children }) => (
+  <button className={styles.button} onClick={onClick}>
     <p className={styles.content}>{children}</p>
   </button>
 )
@@ -108,8 +108,8 @@ const Content = styled.p`
   font-size: '0.875rem';
 `
 
-const StyledButton = ({ handleClick, children }) => (
-  <Button onClick={handleClick}>
+const StyledButton = ({ onClick, children }) => (
+  <Button onClick={onClick}>
     <Content>{children}</Content>
   </Button>
 )
@@ -140,9 +140,9 @@ const Content = styled.p`
   font-size: '0.875rem';
 `
 
-const StyledButton = ({ handleClick, children }) => (
+const StyledButton = ({ onClick, children }) => (
   <ThemeProvider theme={theme}>
-    <Button onClick={handleClick} customBorderColor="#fdsafd">
+    <Button onClick={onClick} customBorderColor="#fdsafd">
       <Content>{children}</Content>
     </Button>
   </ThemeProvider>
@@ -256,7 +256,7 @@ const theme = {
 <Box fontSize={4} />
 
 // margin: 16px (theme.space[3])
-<Box m={2} />
+<Box m={3} />
 
 // color: #93afff (theme.colors.blueSky)
 <Box color="blueSky" />
