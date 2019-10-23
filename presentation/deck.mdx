@@ -129,7 +129,7 @@ const theme = {
   }
 }
 
-const Button = styled.button`
+const Button = styled('button')`
   display: 'inline-flex';
   background-color: `${props => props.theme.colors.blueSky}`;
   color: `${props => props.theme.colors.lightOrange}`;
@@ -153,26 +153,27 @@ const StyledButton = ({ handleClick, children }) => (
 
 ## CSS-in-JS (styled-component | emotion  | jss)
 
-**https://npmcharts.com/compare/glamor,aphrodite,radium,glamorous,styled-components,jss,emotion?interval=30**
+> Simplest version of `styled` can be something like this
 
----
+```jsx
+import React, { useEffect, useRef } from "react";
 
-## COMPONENT-BASED DESIGN
+const styled = ElementType => style => props => {
+  const elementRef = useRef(null);
 
-<Image
-  style={{
-    backgroundSize: 'auto auto'
-  }}
-  src='https://vendiadvertising.com/sites/default/files/component-design-mock-up.png'
->
-</Image>
+  useEffect(() => {
+    if (elementRef !== null) {
+      elementRef.current.setAttribute("style", style);
+    }
 
----
+    return () => {};
+  }, [elementRef]);
 
-## Styled-system
+  return <ElementType {...props} ref={elementRef} />;
+};
 
-**https://github.com/styled-system/styled-system**
-
+export default styled;
+```
 ---
 
 ## Styled-system
@@ -268,3 +269,25 @@ const theme = {
 ```
 
 ---
+
+## COMPONENT-BASED DESIGN
+
+<Image
+  style={{
+    backgroundSize: 'auto auto'
+  }}
+  src='https://vendiadvertising.com/sites/default/files/component-design-mock-up.png'
+>
+</Image>
+
+---
+
+## Reference links
+
+**https://npmcharts.com/compare/glamor,aphrodite,radium,glamorous,styled-components,jss,emotion?interval=30**
+
+**https://github.com/styled-system/styled-system**
+
+**https://medium.com/styled-components/build-better-component-libraries-with-styled-system-4951653d54ee**
+
+**https://varun.ca/styled-system**
