@@ -36,7 +36,7 @@ const ButtonWithStyledSystem = () => {
   return (
     <ThemeProvider theme={theme}>
       <Flex flexDirection="column" width={1} maxWidth="1400px" mx="auto" my={0}>
-        <h1>Button with styled-system</h1>
+        <h1>Button with Styled-system + Emotion</h1>
         <Flex>
           <Button mr={4}>Default button</Button>
           <Button mr={4} variant="danger">

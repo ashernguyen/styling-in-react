@@ -43,7 +43,7 @@ const Container = styled.div<ContainerProps>`
 const ButtonWithStyledComponents = () => (
   <ThemeProvider theme={theme}>
     <Container isColumn>
-      <h1>Button with stylesheet (scss)</h1>
+      <h1>Style button by Styled-components (CSS in JS)</h1>
       <Container>
         <Button>Default button</Button>
         <Button type="danger">Danger button</Button>

@@ -178,24 +178,28 @@ export default styled;
 
 ## Styled-system
 
+* A library for adding theme-based style props to components using CSS-in-JS and React. It accomplishes this via *style functions*
+* Each **style function** exposes its own set of props that style elements based on values defined in your *design system theme*. It has a rich API with functions for most CSS properties.
+
+---
+
+## Styled-system
+
 ```jsx
 import { space, width, fontSize, color } from 'styled-system';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from './theme';
 
-const Box = styled.div(
-  {
-    boxSizing: 'border-box'
-  },
-  space,
-  width,
-  fontSize,
-  color
-)
+const Box = styled('div')`` 
+  ${space},
+  ${width},
+  ${fontSize},
+  ${color}`
+`
 
-render(
+const BlueBox = (
   <ThemeProvider theme={theme}>
-    <Box p={[3, 4, 5]} bg="blueSky" color="lightOrange">
+    <Box p={[3, 4, 5]} bg="blueSky" fontSize={[1, 2, 3]}>
       This is a Box
     </Box>
   </ThemeProvider>,
@@ -267,19 +271,6 @@ const theme = {
 // renders CSS `50%` width since it's not defined in theme
 <Box width={1/2} />
 ```
-
----
-
-## COMPONENT-BASED DESIGN
-
-<Image
-  style={{
-    backgroundSize: 'auto auto'
-  }}
-  src='https://vendiadvertising.com/sites/default/files/component-design-mock-up.png'
->
-</Image>
-
 ---
 
 ## Reference links

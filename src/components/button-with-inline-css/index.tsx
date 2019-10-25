@@ -12,7 +12,7 @@ const ButtonWithStylesheet = () => (
       justifyContent: 'flex-start'
     }}
   >
-    <h1>Button with inline css - No way to make it responsive with media query</h1>
+    <h1>Styled button with INLINE CSS - No way to make it responsive with media query</h1>
     <div
       style={{
         width: '100%',
